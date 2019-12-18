@@ -6,10 +6,9 @@ import { DEFAULT_EXTENSIONS } from '@babel/core';
 export default {
   input: ["src/main-a.ts", "src/main-b.ts"],
   output: [
-    // ES module version, for modern browsers
     {
-      dir: "public/module",
-      format: "es",
+      dir: "public/nomodule",
+      format: "system",
       sourcemap: true
     }
   ],
@@ -19,6 +18,8 @@ export default {
       verbosity: 3
     }),
     babel({
+	  babelrc: false,
+	  presets: [['@babel/env', { modules: false }]],
       exclude: 'node_modules/**',
       extensions: [
         ...DEFAULT_EXTENSIONS,

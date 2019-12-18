@@ -25,12 +25,19 @@
 	</div>
 
 	<script>
+		if (typeof Promise === 'undefined')
+			document.write('<script src="./bluebird.core.min.js"><\/script>');
+	</script>
+	<script>
 		import("/module/main-a.js");
 		import("/module/main-b.js");
+		debugger;
 		window.supportsDynamicImport = true;
 	</script>
 	<script>
+		debugger;
 		if (!window.supportsDynamicImport) {
+			console.log('loading without module support')
 			const systemJsLoaderTag = document.createElement('script');
 			systemJsLoaderTag.src = 'https://unpkg.com/systemjs@2.0.0/dist/s.min.js';
 			systemJsLoaderTag.addEventListener('load', function () {

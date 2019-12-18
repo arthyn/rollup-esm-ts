@@ -3,3 +3,4 @@ node_modules
 package-lock.json
 public/module
 public/nomodule
+.rpt2_cache
